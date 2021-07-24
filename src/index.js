@@ -4,14 +4,22 @@ import photoCard from './templates/card.hbs';
 import PhotosApiService from './js/photos-service.js';
 import axios from 'axios';
 import Notiflix from "notiflix";
+import LoadMoreBtn from './js/load-more-btn.js';
 
 
 const refs = getRefs();
 
+const loadMoreBtn = new LoadMoreBtn({
+    selector: '[data-action="load-more"]',
+    hidden: true,
+});
+console.log(loadMoreBtn)
+
 const photosApiService = new PhotosApiService;
 
 refs.searchForm.addEventListener('submit', onSearch);
-refs.loadMoreBtn.addEventListener('click', onLoadMore);
+// refs.loadMoreBtn.addEventListener('click', onLoadMore);
+loadMoreBtn.refs.button.addEventListener('click', onLoadMore);
 
 
 function onSearch(e) {
@@ -23,22 +31,37 @@ function onSearch(e) {
         return  Notiflix.Notify.failure('Sorry, there are no images matching your search query. Please try again.');
     }
 
+    loadMoreBtn.show();
     photosApiService.resetPage();
-    photosApiService.fetchPhotos().then(hits => {
-        clearHitsContainer();
-        appendHitsMarkup(hits);
+    clearHitsContainer();
+    // fetchHits();
 
-    });
+    photosApiService.fetchPhotos().then(hits => {
+        appendHitsMarkup(hits);
+        });
 }
 
 
+// function fetchHits() {
+
+//     loadMoreBtn.disable();
+//     photosApiService.fetchHits().then(hits => {
+//         appendHitsMarkup(hits);
+//         loadMoreBtn.enable();
+//     });
+
+// }
+
+
 function onLoadMore() {
+    loadMoreBtn.disable();
     photosApiService.fetchPhotos().then(appendHitsMarkup);
+     loadMoreBtn.enable();
 }
 
 
 function appendHitsMarkup(hits) {
-    refs.photoGallery.insertAdjasentHTML('beforeend', photoCard(hits));
+    refs.photoGallery.insertAdjacentHTML('beforeend', photoCard(hits));
 }
 
 

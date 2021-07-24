@@ -1,13 +1,45 @@
 .search-form {
   display: flex;
   justify-content: center;
-  padding: 8px;
-  margin-bottom: 24px;
-  margin-left: 10px;
+  padding: 30px;
+  margin-bottom: 0px;
+  margin-left: 0px;
+  background-color: rgb(65, 65, 206);
 }
 
 .searchBtn {
-  display: block;
-  margin-left: 10px;
+  display: flex;
+  justify-content: center;
+  margin-left: 20px;
   margin-right: auto;
+  background-color: rgb(142, 202, 204);
+}
+
+input {
+  margin-left: 500px;
+}
+
+.btn {
+  display: flex;
+  justify-content: center;
+  background-color: rgb(142, 202, 204);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.btn.is-hidden {
+  display: none;
+}
+
+.btn > .spinner.is-hidden {
+  display: none;
+}
+
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.photo-card {
+  margin-left: 20px;
 }
