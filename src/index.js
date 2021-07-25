@@ -63,15 +63,24 @@ function onLoadMore() {
     loadMoreBtn.disable();
 
     photosApiService.fetchPhotos().then(appendHitsMarkup);
-     loadMoreBtn.enable();
+    loadMoreBtn.enable();
+    
+
 }
 
 
-function appendHitsMarkup(hits) {
-    refs.photoGallery.insertAdjacentHTML('beforeend', photoCard(hits));
-}
+    function appendHitsMarkup(hits) {
+        refs.photoGallery.insertAdjacentHTML('beforeend', photoCard(hits));
+    }
 
 
-function clearHitsContainer() {
-    refs.photoGallery.innerHTML = '';
-}
+    function clearHitsContainer() {
+        refs.photoGallery.innerHTML = '';
+    }
+
+
+    function getTotalImgCount() {
+        refs.loadBtn.style.display = 'none';
+
+        Notiflix.Notify.info("We're sorry, but you've reached the end of search results.");
+    }

@@ -10,7 +10,7 @@ export default class PhotosApiService {
     }
 
 
-fetchPhotos() {
+async fetchPhotos() {
    const url = `${BASE_URL}?key=${API_KEY}&q=${this.searchQuery}&image_type=photo&safesearch=true&orientation=horizontal&per_page=40&page=${this.page}`
     
     return fetch(url)
