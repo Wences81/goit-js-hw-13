@@ -1,3 +1,5 @@
+
+
 const API_KEY = '22617887-a3f68d8335d469bb4f11f2290';
 const BASE_URL = 'https://pixabay.com/api/';
 
@@ -13,11 +15,13 @@ export default class PhotosApiService {
 async fetchPhotos() {
    const url = `${BASE_URL}?key=${API_KEY}&q=${this.searchQuery}&image_type=photo&safesearch=true&orientation=horizontal&per_page=40&page=${this.page}`
     
-    return fetch(url)
+  
+    
+    return await  fetch(url)
         .then(response => response.json())
         .then(({ hits }) => {
             this.incrementPage();
-            return hits;
+            return  hits;
         });
 
 }
