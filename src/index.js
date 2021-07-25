@@ -5,6 +5,10 @@ import PhotosApiService from './js/photos-service.js';
 import axios from 'axios';
 import Notiflix from "notiflix";
 import LoadMoreBtn from './js/load-more-btn.js';
+import SimpleLightbox from "simplelightbox";
+
+
+
 
 
 const refs = getRefs();
@@ -33,6 +37,8 @@ function onSearch(e) {
 
     loadMoreBtn.show();
     photosApiService.resetPage();
+
+
     clearHitsContainer();
     // fetchHits();
 
@@ -55,6 +61,7 @@ function onSearch(e) {
 
 function onLoadMore() {
     loadMoreBtn.disable();
+
     photosApiService.fetchPhotos().then(appendHitsMarkup);
      loadMoreBtn.enable();
 }
