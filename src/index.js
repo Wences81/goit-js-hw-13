@@ -33,7 +33,7 @@ async function onSearch(e) {
 
     if (photosApiService.query.trim() === '') {
         return Notiflix.Notify.failure('Sorry, there are no images matching your search query. Please try again.');
-    }
+    } 
 
     
 
@@ -59,9 +59,14 @@ async function onSearch(e) {
 // }
 
 
-function onLoadMore() {
-    loadMoreBtn.disable();
+async function onLoadMore() {
+    const result =  await photosApiService.fetchPhotos();
 
+    if (refs.photoGallery.querySelectorAll('.photo-card').length >= result.totalHits) {
+           getTotalImgCount()
+    }
+
+    loadMoreBtn.disable();
     photosApiService.fetchPhotos().then(appendHitsMarkup);
     loadMoreBtn.enable();
 

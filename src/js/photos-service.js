@@ -17,7 +17,7 @@ async fetchPhotos() {
     
   
     
-    return await  fetch(url)
+    return  await fetch(url)
         .then(response => response.json())
         .then(({ hits }) => {
             this.incrementPage();
