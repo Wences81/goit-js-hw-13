@@ -24,8 +24,6 @@ async function onImgSearch(evt) {
   photosApiService.resetPage();
   clearImgBox();
   
-  
-  
   refs.loadMoreBtn.classList.add('hidden');
 
   photosApiService.searchQuery = evt.currentTarget.elements.searchQuery.value.trim();
@@ -41,7 +39,7 @@ async function onImgSearch(evt) {
 
     ImgMarkup(result.hits);
     
-       gallery.refresh();
+       gallery.refresh()
      
     if (result.hits.length === 0) {
       refs.loadMoreBtn.classList.add('hidden');
@@ -63,9 +61,8 @@ async function onImgLoad() {
   try {
     const result = await photosApiService.fetchPhotos();
     
-    gallery.refresh();
-    
-    
+
+
     if (refs.photoGallery.querySelectorAll('.photo-card').length === result.totalHits) {
       getTotalImgCount();
     } else {
