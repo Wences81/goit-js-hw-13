@@ -4,7 +4,7 @@ import photoCard from './templates/card.hbs';
 import PhotosApiService from './js/photos-service.js';
 import Notiflix from "notiflix";
 import SimpleLightbox from 'simplelightbox'
-
+import 'simplelightbox/src/simple-lightbox.scss';
 
 
 
